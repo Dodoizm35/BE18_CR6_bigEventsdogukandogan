@@ -1,0 +1,26 @@
+<!-- Events-->
+<section class="content-section" id="portfolio">
+    <div class="container px-4 px-lg-5">
+        <div class="content-section-heading text-center">
+            <h3 class="text-secondary mb-0">Events</h3>
+            <h2 class="mb-5">All events</h2>
+        </div>
+        <div class="row gx-0">
+            {% for event in events %}
+                <div class="col-lg-6">
+                    <a class="portfolio-item" href="{{ path('app_event_show' , { 'id' : event.id }) }}">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <div class="h2">{{ event.name }}</div>
+                                <p class="mb-0">{{ event.description|slice(0, 150) }}...</p>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="{{ event.image }}" alt="..." />
+                    </a>
+                </div>
+            {% else %}
+                <h2>No event found</h2>
+            {% endfor %}
+        </div>
+    </div>
+</section>

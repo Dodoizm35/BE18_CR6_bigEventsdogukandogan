@@ -1,0 +1,16 @@
+{% extends 'base_events.html.twig' %}
+
+{% block title %}Edit Event{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="card w-75 m-md-auto">
+        <div class="card-header">
+            <h1>Edit Event</h1>
+        </div>
+        <div class="card-body">
+            {{ include('event/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

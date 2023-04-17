@@ -1,0 +1,85 @@
+{% extends 'base_events.html.twig' %}
+
+{% block title %}Event{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Event content-->
+                <article>
+                    <!-- Event header-->
+                    <header class="mb-4">
+                        <!-- Event title-->
+                        <h1 class="fw-bolder mb-1"> {{ event.name }} </h1>
+                        <!-- Event meta content-->
+                        <div class="text-muted fst-italic mb-2">Start at {{ event.startAt|date("F jS Y \\a\\t g:ia") }}</div>
+                        <!-- Event categories-->
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ event.eventType.name }}</a>
+                    </header>
+                    <!-- Preview image figure-->
+                    <figure class="mb-4"><img class="img-fluid rounded" src="{{ event.image }}" alt="..."></figure>
+                    <!-- Event content-->
+                    <section class="mb-5">
+                        <p class="fs-5 mb-4">
+                            {{ event.description }}
+                        </p>
+                    </section>
+                </article>
+            </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+                <!-- Event info-->
+                <div class="card mb-4">
+                    <div class="card-header">Event info</div>
+                    <div class="card-body">
+                        <table class="table border-white w-auto">
+                            <tbody>
+                            <tr>
+                                <th>Capacity</th>
+                                <td>{{ event.capacity }}</td>
+                            </tr>
+                            <tr>
+                                <th>ContactEmail</th>
+                                <td>{{ event.contactEmail }}</td>
+                            </tr>
+                            <tr>
+                                <th>ContactPhone</th>
+                                <td>{{ event.contactPhone }}</td>
+                            </tr>
+                            <tr>
+                                <th>PhysicalLocation</th>
+                                <td>{{ event.physicalLocation }}</td>
+                            </tr>
+                            <tr>
+                                <th>ZipCode</th>
+                                <td>{{ event.zipCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>CityName</th>
+                                <td>{{ event.cityName }}</td>
+                            </tr>
+                            <tr>
+                                <th>Url</th>
+                                <td><a href="{{ event.url }}" target="_blank">Click here!</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Action widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Actions</div>
+                    <div class="card-body">
+                        <ul class="list-group-horizontal-lg">
+                            <li class="list-unstyled"><a href="{{ path('app_event_edit', {'id': event.id}) }}" class="btn btn-secondary">Edit Event</a></li>
+                            <li class="mt-3 list-unstyled"">
+                                {{ include('event/_delete_form.html.twig') }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
